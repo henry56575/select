@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>manualSelect</title>
+	<link rel="stylesheet" type="text/css" href="css/basic.css">
+	<link rel="stylesheet" type="text/css" href="css/imgareaselect-default.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="mask">
+	<div class="btn-group">
+			   	<button type="button" class="btn btn-primary dropdown-toggle" 
+			      data-toggle="dropdown">
+			      手动/自动切换 <span class="caret"></span>
+			   </button>
+			   <ul class="dropdown-menu" role="menu">
+			      <li><a href="#">手动选框</a></li>
+			      <li class="divider"></li>
+			      <li><a href="index.html">自动选框</a></li>
+			   </ul>
+	</div>
+	</div>
+	<div id="container">
+		<div id="header">
+			<h3>manualSelect</h3>
+		</div>
+		<div id="main">
+			<div id="left">
+				<h4>视频播放区</h4> 
+				<form method="post" action="" enctype="multipart/form-data">
+					<label>File Input: <input type="file" name="file" id="file" />
+					</label>	
+					<div id="uploads">
+						<video id="video" width="600" height="300" autoplay>
+						</video>
+					</div>
+					<div>
+						<h4>视频截取区</h4>
+						<canvas style="display:none;" id="canvas" width="600" height="300" ></canvas>
+						<img id="myImg">
+					</div>
+					<br>
+					<br>
+				</form>
+			</div>
+			<div id="right">
+				<div style="padding-left:0.5em">
+				    <form role="form" id="form" method="POST" action="php/submit.php" >
+				    
+				    <table class="table">
+				        
+				        <tr class="success">
+				          <td colspan="4" style="font-size: 110%; font-weight: bold; text-align: left; padding-left: 0.1em;"><b>截取区域左上角坐标:</b></td>
+				        </tr>
+				        <tr>
+				          	<td style="width: 10%;"><b>X:</b>
+				          	</td>
+			 		        <td style="width: 30%;"><input calss="form-control" type="text" id="x" name="LTX"  readonly></td>
+			 		        <td><b>%</b></td>
+				        </tr>
+				      
+				        <tr>
+				          <td><b>Y:</b></td>
+				          <td><input type="text" id="y" name="LTY" value="" readonly ></td>
+				          <td><b>%</b></td>
+				        </tr>
+
+				         <tr class="success">
+				          <td colspan="4" style="font-size: 110%; font-weight: bold; text-align: left; padding-left: 0.1em;"><b>截取区域宽高:</b></td>
+				        </tr>
+				         <tr>
+			 		        <td style="width: 20%;"><b>Width:</b></td>
+				   		    <td><input type="text" name="boxWidth" value="" id="w" readonly ></td>
+				   		     <td><b>%</b></td>
+				        </tr>
+				        <tr>
+				          <td><b>Height:</b></td>
+				          <td><input type="text" id="h" name="boxHeight" value="" readonly ></td>
+				          <td><b>%</b></td>
+				        </tr>
+
+				        <tr class="success">
+				          <td colspan="4" style="font-size: 110%; font-weight: bold; text-align: left; padding-left: 0.1em;"><b>截取开始时间:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td><input type="text" name="startTime" id="startTime" placeholder="先暂停再点击右侧按钮" readonly></td>
+				        	<td><b>s</b></td>
+				        	<td></td>
+				        	<td></td>
+				        	<td><input style="width:100%;font-size:100%" type="button" id="btn1"/ value="点此确定开始时间"></td>
+				        </tr>
+				        <tr class="success">
+				          <td colspan="4" style="font-size: 110%; font-weight: bold; text-align: left; padding-left: 0.1em;"><b>截取终止时间:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td><input type="text" name="endTime" id="endTime" placeholder="先暂停再点击右侧按钮" readonly></td>
+				        	<td><b>s</b></td>
+				        	<td></td>
+				        	<td></td>
+				        	<td><input style="width:100%;font-size:100%" type="button" id="btn2"/ value="点此确定终止时间"></td>
+				        </tr>
+				        <tr class="success">
+				          <td colspan="4" style="font-size: 110%; font-weight: bold; text-align: left; padding-left: 0.1em;"><b>交互效果:</b></td>
+				        </tr>
+				        <tr class="active">
+				        	<td></td>
+				        	<td  style="font-size: 100%; text-align: left; "><b>预置提示效果:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td><input type="url" name="url1" placeholder="URL地址" required></td>
+				        </tr>
+				        <tr class="active">
+				        	<td></td>
+				        	<td  style="font-size: 100%; text-align: left; "><b>触发效果:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				       		<td><input type="url" name="url2" placeholder="URL地址" required></td>
+				        </tr>
+				        <tr class="active">
+				        	<td></td>
+				        	<td  style="font-size: 100%; text-align: left; "><b>跳转视频:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td><input type="number" name="vid" placeholder="视频Vid" required></td>
+				        </tr>
+				        <tr class="active">
+				        	<td></td>
+				        	<td  style="font-size: 100%; text-align: left; "><b>交互形式:</b></td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td style="text-align:left;padding-left:1em;"><input type="radio" name="interact" value="0" required>点击</td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	 <td style="text-align:left;padding-left:1em;"><input type="radio" name="interact" value="1" required>陀螺仪</td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td style="text-align:left;padding-left:1em;"><input type="radio" name="interact" value="2" required>两者均有</td>
+				        </tr>  
+				        
+				    </table>
+				    
+				    <input style="margin-top:30px;width:30%;font-size:150%" type="submit" value="提交">
+				   </form>
+			
+				</div>
+			</div>	
+		</div>	
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.imgareaselect.min.js"></script>
+	<script type="text/javascript" src="js/select.js"></script>
+	
+	 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#file").AjaxFileUpload({
+				onComplete: function(filename, response) {
+						$("#video").attr("src", filename).attr("controls","controls")
+				}
+			});
+
+		});
+	 </script>
+	<script type="text/javascript" src="js/information.js"></script>
+</body>
+</html>
